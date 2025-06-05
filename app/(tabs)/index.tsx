@@ -4,6 +4,11 @@ import { Button } from "react-native";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import {
+  FONT_KANTUMRUY_PRO_ITALIC,
+  FONT_KANTUMRUY_PRO_LIGHT_ITALIC,
+  FONT_KANTUMRUY_PRO_REGULAR,
+} from "@/constants/Fonts";
 import { useLanguageChanger } from "@/hooks/useLanguager";
 import { useTranslation } from "react-i18next";
 
@@ -19,7 +24,14 @@ export default function HomeScreen() {
       }
     >
       <ThemedView>
-        <ThemedText style={{ fontSize: 24, fontWeight: "bold" }}>
+        <ThemedText
+          style={{
+            fontSize: 24,
+            fontFamily: FONT_KANTUMRUY_PRO_ITALIC,
+            lineHeight: 32,
+            textAlign: "center",
+          }}
+        >
           {t("app.welcome")}
         </ThemedText>
         <Button
@@ -49,8 +61,22 @@ export default function HomeScreen() {
             gap: 8,
           }}
         >
-          <ThemedText>current language: {i18n.language}</ThemedText>
-          <ThemedText>{t("app.title")}</ThemedText>
+          <ThemedText
+            style={{
+              fontFamily: FONT_KANTUMRUY_PRO_REGULAR,
+            }}
+          >
+            current language: {i18n.language}
+          </ThemedText>
+          <ThemedText
+            style={{
+              fontSize: 18,
+              fontFamily: FONT_KANTUMRUY_PRO_LIGHT_ITALIC,
+              fontStyle: "italic",
+            }}
+          >
+            {t("app.title")}
+          </ThemedText>
         </ThemedView>
       </ThemedView>
     </ParallaxScrollView>

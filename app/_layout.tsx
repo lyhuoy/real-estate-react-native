@@ -10,15 +10,13 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
+import { APP_FONTS } from "@/constants/Fonts";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { useLanguageStore } from "@/stores/localizationStore";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-  });
-
+  const [loaded] = useFonts(APP_FONTS);
   const { initializeLanguage } = useLanguageStore();
 
   useEffect(() => {
