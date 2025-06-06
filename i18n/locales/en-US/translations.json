@@ -2,5 +2,8 @@
   "app": {
     "title": "Real Estate App",
     "welcome": "Welcome to the Real Estate App"
+  },
+  "auth": {
+    "signUpWithGoogle": "Sign up with Google"
   }
 }
