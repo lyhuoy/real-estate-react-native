@@ -5,7 +5,6 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import {
-  FONT_KANTUMRUY_PRO_ITALIC,
   FONT_KANTUMRUY_PRO_LIGHT_ITALIC,
   FONT_KANTUMRUY_PRO_REGULAR,
 } from "@/constants/Fonts";
@@ -27,7 +26,7 @@ export default function HomeScreen() {
         <ThemedText
           style={{
             fontSize: 24,
-            fontFamily: FONT_KANTUMRUY_PRO_ITALIC,
+            fontFamily: FONT_KANTUMRUY_PRO_REGULAR,
             lineHeight: 32,
             textAlign: "center",
           }}
