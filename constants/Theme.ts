@@ -1,17 +1,3 @@
-export const COLORS = {
-  primary: "#3498db",
-  primaryDark: "#2980b9",
-  secondary: "#2ecc71",
-  accent: "#e74c3c",
-  background: "#f9f9f9",
-  card: "#ffffff",
-  text: "#333333",
-  textLight: "#666666",
-  border: "#dddddd",
-  error: "#e74c3c",
-  success: "#2ecc71",
-};
-
 export const SPACING = {
   xs: 4,
   sm: 8,

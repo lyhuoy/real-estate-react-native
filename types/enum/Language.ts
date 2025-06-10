@@ -3,5 +3,6 @@ enum Language {
   KM = "km",
   TH = "th",
   KR = "kr",
+  ZH = "zh",
 }
 export default Language;

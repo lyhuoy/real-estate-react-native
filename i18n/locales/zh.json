@@ -1,0 +1,15 @@
+{
+  "welcome": "欢迎",
+  "app": {
+    "title": "房地产应用",
+    "welcome": "欢迎使用房地产应用"
+  },
+  "auth": {
+    "signUpWithGoogle": "使用 Google 注册"
+  },
+  "tabBar": {
+    "home": "首页",
+    "explore": "探索",
+    "profile": "个人资料"
+  }
+}

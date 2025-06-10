@@ -5,28 +5,9 @@
 
 const tintColorLight = "#0a7ea4";
 const tintColorDark = "#fff";
-export const appBackground = "#f4f7f8";
-
-export const FLAT_COLORS = {
-  primaryBlue: {
-    DEFAULT: "#0061FF",
-    light: "#E0E9FF",
-    lighter: "#F0F4FF",
-  },
-
-  neutralBlack: {
-    DEFAULT: "#191D31",
-    medium: "#666876",
-    light: "#8C8E98",
-  },
-
-  bluePrimary: "#0061FF",
-  bluePrimaryLight: "#E0E9FF",
-  bluePrimaryLighter: "#F0F4FF",
-  blackDefault: "#191D31",
-  greyMedium: "#666876",
-  greyLight: "#8C8E98",
-};
+export const appBackground = "#ebebeb";
+export const ACTIVE_COLOR = "#EF8E52";
+export const INACTIVE_COLOR = "#B3B1B4";
 
 export const zincColors = {
   50: "#fafafa",
