@@ -21,7 +21,7 @@ export default function RecommandationCard() {
     >
       <View style={styles.content}>
         <View style={styles.imageWrapper}>
-          <BlurView intensity={10} style={styles.ratingBadge}>
+          <BlurView intensity={50} style={styles.ratingBadge}>
             <ThemedText style={styles.ratingText}>4.8</ThemedText>
             <AntDesign name="star" size={14} color="#FB9400" />
           </BlurView>
@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.sm,
     gap: 4,
     zIndex: 1,
-    backgroundColor: "rgba(255, 255, 255, 0.5)",
     overflow: "hidden",
   },
   ratingText: {
     fontSize: 14,
     fontFamily: FONT_KANTUMRUY_PRO_SEMI_BOLD,
+    color: "white",
   },
   propertyImage: {
     width: 140,
