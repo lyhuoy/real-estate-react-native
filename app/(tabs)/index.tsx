@@ -1,83 +1,95 @@
 import { Image } from "expo-image";
-import { Button } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import FeatureCardList from "@/components/featured/FeatureCardList";
+import FilterMenu from "@/components/filter-menu/FilterMenu";
+import RecommandationCardList from "@/components/recommendation/RecommandationCardList";
+import { SafeAreaContainer } from "@/components/SafeAreaContainer";
+import { SearchBar } from "@/components/SearchBar";
+import SectionHeader from "@/components/SectionHeader";
 import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import {
-  FONT_KANTUMRUY_PRO_LIGHT_ITALIC,
-  FONT_KANTUMRUY_PRO_REGULAR,
-} from "@/constants/Fonts";
-import { useLanguageChanger } from "@/hooks/useLanguager";
+import { BORDER_RADIUS, SPACING } from "@/constants/Theme";
+import { useAppThemeColor } from "@/hooks/useAppThemeColor";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
+import Fontisto from "@expo/vector-icons/Fontisto";
 import { useTranslation } from "react-i18next";
 
 export default function HomeScreen() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { themeColors } = useAppThemeColor();
 
-  const changeLanguage = useLanguageChanger();
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image source={require("@/assets/images/partial-react-logo.png")} />
-      }
-    >
-      <ThemedView>
-        <ThemedText
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <SafeAreaContainer>
+        <View
           style={{
-            fontSize: 24,
-            fontFamily: FONT_KANTUMRUY_PRO_REGULAR,
-            lineHeight: 32,
-            textAlign: "center",
+            gap: SPACING.md,
           }}
         >
-          {t("app.welcome")}
-        </ThemedText>
-        <Button
-          title="English"
-          onPress={() => changeLanguage("en")}
-          disabled={i18n.language === "en"}
-        />
-        <Button
-          title="ភាសាខ្មែរ"
-          onPress={() => changeLanguage("km")}
-          disabled={i18n.language === "km"}
-        />
-        <Button
-          title="ภาษาไทย"
-          onPress={() => changeLanguage("th")}
-          disabled={i18n.language === "th"}
-        />
-        <Button
-          title="한국어"
-          onPress={() => changeLanguage("kr")}
-          disabled={i18n.language === "kr"}
-        />
-        <ThemedView
-          style={{
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 8,
-          }}
-        >
-          <ThemedText
+          <View
             style={{
-              fontFamily: FONT_KANTUMRUY_PRO_REGULAR,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              paddingHorizontal: SPACING.md,
             }}
           >
-            current language: {i18n.language}
-          </ThemedText>
-          <ThemedText
-            style={{
-              fontSize: 18,
-              fontFamily: FONT_KANTUMRUY_PRO_LIGHT_ITALIC,
-              fontStyle: "italic",
+            <TouchableOpacity
+              style={{ flexDirection: "row", alignItems: "center", gap: 12 }}
+            >
+              <Image
+                source={require("@/assets/images/profile.jpg")}
+                style={{
+                  width: 46,
+                  height: 46,
+                  borderRadius: BORDER_RADIUS.round,
+                }}
+                transition={500}
+              />
+              <View>
+                <ThemedText>{t("welcome")}</ThemedText>
+                <ThemedText>Tinfy Lu</ThemedText>
+              </View>
+            </TouchableOpacity>
+            <Fontisto name="bell" size={24} color={themeColors.text} />
+          </View>
+
+          <SearchBar
+            containerStyle={{
+              marginTop: SPACING.sm,
+              marginHorizontal: SPACING.md,
             }}
-          >
-            {t("app.title")}
-          </ThemedText>
-        </ThemedView>
-      </ThemedView>
-    </ParallaxScrollView>
+            placeholder={t("app.placeholder")}
+            suffixIcon={
+              <AntDesign
+                name="search1"
+                size={22}
+                color={themeColors.text}
+                style={{
+                  opacity: 0.5,
+                }}
+              />
+            }
+            prefixIcon={
+              <Ionicons
+                name="menu-outline"
+                size={24}
+                color={themeColors.text}
+                style={{
+                  opacity: 0.5,
+                }}
+              />
+            }
+          />
+          <View style={{ gap: SPACING.lg }}>
+            <SectionHeader title="Featured" onPress={() => {}} />
+            <FeatureCardList />
+            <SectionHeader title="Our Recommendations" onPress={() => {}} />
+            <FilterMenu />
+            <RecommandationCardList />
+          </View>
+        </View>
+      </SafeAreaContainer>
+    </ScrollView>
   );
 }

@@ -5,7 +5,7 @@ import { useCallback } from "react";
 export const useLanguageChanger = () => {
   const setLanguageInStore = useLanguageStore((state) => state.setLanguage);
 
-  const changeLanguage = useCallback(
+  const onChangeLanguage = useCallback(
     (lang: string) => {
       i18n.changeLanguage(lang);
       setLanguageInStore(lang);
@@ -13,5 +13,5 @@ export const useLanguageChanger = () => {
     [setLanguageInStore]
   );
 
-  return changeLanguage;
+  return { onChangeLanguage };
 };

@@ -1,14 +1,15 @@
 import { appleBlue, zincColors } from "@/constants/Colors";
+import { FONT_KANTUMRUY_PRO_REGULAR } from "@/constants/Fonts";
+import { useAppTheme } from "@/hooks/useAppTheme";
 import React from "react";
 import {
   ActivityIndicator,
-  Pressable,
   StyleSheet,
+  Text,
   TextStyle,
-  useColorScheme,
+  TouchableOpacity,
   ViewStyle,
 } from "react-native";
-import { ThemedText } from "./ThemedText";
 
 type ButtonVariant = "filled" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
@@ -24,7 +25,7 @@ interface ButtonProps {
   textStyle?: TextStyle;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const AppButton: React.FC<ButtonProps> = ({
   onPress,
   variant = "filled",
   size = "md",
@@ -34,9 +35,8 @@ export const Button: React.FC<ButtonProps> = ({
   style,
   textStyle,
 }) => {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-
+  const { resolvedTheme } = useAppTheme();
+  const isDark = resolvedTheme === "dark";
   const sizeStyles: Record<
     ButtonSize,
     { height: number; fontSize: number; padding: number }
@@ -77,7 +77,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   const getTextColor = () => {
     if (disabled) {
-      return isDark ? zincColors[500] : zincColors[400];
+      return isDark ? zincColors[500] : "zincColors[400]";
     }
 
     switch (variant) {
@@ -90,7 +90,8 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <Pressable
+    <TouchableOpacity
+      activeOpacity={0.5}
       onPress={onPress}
       disabled={disabled || loading}
       style={[
@@ -106,21 +107,22 @@ export const Button: React.FC<ButtonProps> = ({
       {loading ? (
         <ActivityIndicator color={getTextColor()} />
       ) : (
-        <ThemedText
+        <Text
           style={StyleSheet.flatten([
             {
               fontSize: sizeStyles[size].fontSize,
               color: getTextColor(),
               textAlign: "center",
               marginBottom: 0,
-              fontWeight: "700",
+              fontFamily: FONT_KANTUMRUY_PRO_REGULAR,
+              lineHeight: sizeStyles[size].fontSize * 1.2,
             },
             textStyle,
           ])}
         >
           {children}
-        </ThemedText>
+        </Text>
       )}
-    </Pressable>
+    </TouchableOpacity>
   );
 };

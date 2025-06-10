@@ -3,16 +3,18 @@ import Language from "@/types/enum/Language";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-import translationEn from "./locales/en-US/translations.json";
-import translationKm from "./locales/km-KH/translations.json";
-import translationKr from "./locales/kr-KO/translations.json";
-import translationTh from "./locales/th-TH/translations.json";
+import translationEn from "./locales/en.json";
+import translationKm from "./locales/km.json";
+import translationKr from "./locales/kr.json";
+import translationTh from "./locales/th.json";
+import translationZh from "./locales/zh.json";
 
 const resources = {
   km: { translation: translationKm },
   en: { translation: translationEn },
   th: { translation: translationTh },
   kr: { translation: translationKr },
+  zh: { translation: translationZh },
 };
 
 const languageDetector = {

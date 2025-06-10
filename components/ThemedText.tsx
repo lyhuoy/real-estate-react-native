@@ -6,7 +6,7 @@ import {
   FONT_KANTUMRUY_PRO_REGULAR,
   FONT_KANTUMRUY_PRO_SEMI_BOLD,
 } from "@/constants/Fonts";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useAppThemeColor } from "@/hooks/useAppThemeColor";
 
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
@@ -21,12 +21,13 @@ export function ThemedText({
   type = "default",
   ...rest
 }: ThemedTextProps) {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
+  const { themeColors } = useAppThemeColor();
+  const textColor = themeColors.text;
 
   return (
     <Text
       style={[
-        { color },
+        { color: textColor },
         type === "default" ? styles.default : undefined,
         type === "title" ? styles.title : undefined,
         type === "defaultSemiBold" ? styles.defaultSemiBold : undefined,
@@ -42,7 +43,7 @@ export function ThemedText({
 const styles = StyleSheet.create({
   default: {
     fontSize: 16,
-    lineHeight: 32,
+    lineHeight: 20,
     fontFamily: FONT_KANTUMRUY_PRO_REGULAR,
   },
   defaultSemiBold: {

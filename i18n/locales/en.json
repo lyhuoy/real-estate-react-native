@@ -1,0 +1,16 @@
+{
+  "welcome": "Welcome",
+  "app": {
+    "title": "Real Estate App",
+    "welcome": "Welcome to the Real Estate App",
+    "placeholder": "Search something..."
+  },
+  "auth": {
+    "signUpWithGoogle": "Sign up with Google"
+  },
+  "tabBar": {
+    "home": "Home",
+    "explore": "Explore",
+    "profile": "Profile"
+  }
+}

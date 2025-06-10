@@ -1,6 +1,8 @@
 import { ThemedText } from "@/components/ThemedText";
-import { FLAT_COLORS } from "@/constants/Colors";
 import { FONT_SIZES, SPACING } from "@/constants/Theme";
+import { useAppTheme } from "@/hooks/useAppTheme";
+import { useAppThemeColor } from "@/hooks/useAppThemeColor";
+import { bluePrimary, bluePrimaryLight } from "@/theme/color";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -9,6 +11,9 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AuthenticationScreen() {
+  const { themeColors } = useAppThemeColor();
+  const { resolvedTheme } = useAppTheme();
+  const isDark = resolvedTheme === "dark";
   const { t } = useTranslation();
   const router = useRouter();
 
@@ -16,7 +21,12 @@ export default function AuthenticationScreen() {
     router.replace("/(tabs)");
   };
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: isDark ? themeColors.background : "white" },
+      ]}
+    >
       <SafeAreaView style={styles.safeArea}>
         <Image
           source={require("@/assets/images/auth.webp")}
@@ -53,7 +63,6 @@ export default function AuthenticationScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
     flex: 1,
   },
   safeArea: {
@@ -82,7 +91,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   titleHighlight: {
-    color: FLAT_COLORS.bluePrimary,
+    color: bluePrimary,
   },
   loginInfoText: {
     color: "#666876",
@@ -93,7 +102,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: FLAT_COLORS.bluePrimaryLight,
+    borderColor: bluePrimaryLight,
     borderRadius: 9999,
     paddingVertical: SPACING.sm,
     paddingHorizontal: SPACING.lg,
