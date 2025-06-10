@@ -1,14 +1,13 @@
+import { FONT_KANTUMRUY_PRO_SEMI_BOLD } from "@/constants/Fonts";
 import { BORDER_RADIUS, SPACING } from "@/constants/Theme";
-import { useAppThemeColor } from "@/hooks/useAppThemeColor";
 import { AntDesign } from "@expo/vector-icons";
+import { BlurView } from "expo-blur";
 import { Image } from "expo-image";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ThemedText } from "../ThemedText";
 
 export default function FeatureCard() {
-  const { themeColors } = useAppThemeColor();
-
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.imageContainer}>
@@ -45,15 +44,10 @@ export default function FeatureCard() {
             </TouchableOpacity>
           </View>
         </View>
-        <View
-          style={[
-            styles.ratingContainer,
-            { backgroundColor: themeColors.card },
-          ]}
-        >
-          <AntDesign name="star" size={16} color="#FB9400" />
+        <BlurView intensity={50} style={[styles.ratingContainer]}>
           <ThemedText style={styles.ratingText}>4.8</ThemedText>
-        </View>
+          <AntDesign name="star" size={16} color="#FB9400" />
+        </BlurView>
       </View>
     </TouchableOpacity>
   );
@@ -106,17 +100,20 @@ const styles = StyleSheet.create({
   },
   ratingContainer: {
     position: "absolute",
-    top: SPACING.sm,
-    right: SPACING.sm,
+    top: SPACING.md,
+    right: SPACING.md,
     borderRadius: BORDER_RADIUS.lg,
     flexDirection: "row",
     alignItems: "center",
     padding: SPACING.xs,
     gap: 4,
+    overflow: "hidden",
+    paddingHorizontal: SPACING.sm,
   },
   ratingText: {
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: FONT_KANTUMRUY_PRO_SEMI_BOLD,
+    color: "white",
   },
   favoriteButton: {},
 });
